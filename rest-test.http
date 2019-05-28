@@ -1,0 +1,17 @@
+### SImple way to test http requests
+GET http://localhost:8080/jaxrs-client-17.0.0.Final-SNAPSHOT-exploded/rest/contacts
+Accept: application/json
+
+### Add a contact
+### See class org.jboss.as.quickstarts.jaxrsclient.model.Contact
+POST http://localhost:8080/jaxrs-client-17.0.0.Final-SNAPSHOT-exploded/rest/contacts
+Accept: application/json
+Content-Type: application/json
+
+{
+ "name": "Thomas Herzog"
+}
+### Delete a contact
+DELETE http://localhost:8080/jaxrs-client-17.0.0.Final-SNAPSHOT-exploded/rest/contacts/1
+Accept: application/json
+###

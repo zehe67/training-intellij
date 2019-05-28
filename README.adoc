@@ -1,3 +1,9 @@
 = Example of an JEE application for Intellij development
 
-This is an excerpt of the repository link:https://github.com/wildfly/quickstart/tree/master/jaxrs-client[Wildfly Quickstarta].
+This is an excerpt of the repository link:https://github.com/wildfly/quickstart/tree/master/jaxrs-client[Wildfly Quickstart]. +
+This repository is meant to provide a Java application for showing how to handle this project in Intellij.
+
+== Resources
+
+* ``/rest-test.http`` +
+  An intellij specific format for easily testing rest api.

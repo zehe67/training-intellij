@@ -48,16 +48,23 @@ public class ContactResourceRESTService {
 
         Response.ResponseBuilder builder = null;
         Long nextId = contactsRepository.keySet().size() + 1L;
+
         try {
+            if(contact.getName() == null || contact.getName().trim().isEmpty()
+            || contact.getPhoneNumber() == null || contact.getPhoneNumber().trim().isEmpty()) {
+                throw new IllegalArgumentException("Name of phoneNumber not set");
+            }
             // Store the contact
             contact.setId(nextId);
             contactsRepository.put(nextId, contact);
 
             // Create an "ok" response with the persisted contact
             builder = Response.ok(contact);
+        }catch (IllegalArgumentException e) {
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage());
         } catch (Exception e) {
             // Handle generic exceptions
-            builder = Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage());
+            builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage());
         }
 
         return builder.build();
