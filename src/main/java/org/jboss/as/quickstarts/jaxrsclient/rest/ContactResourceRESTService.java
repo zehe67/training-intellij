@@ -48,6 +48,10 @@ public class ContactResourceRESTService {
 
         Response.ResponseBuilder builder = null;
         Long nextId = contactsRepository.keySet().size() + 1L;
+        if(contact.getName() == null) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+
         try {
             // Store the contact
             contact.setId(nextId);
@@ -57,7 +61,7 @@ public class ContactResourceRESTService {
             builder = Response.ok(contact);
         } catch (Exception e) {
             // Handle generic exceptions
-            builder = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage());
         }
 
         return builder.build();
